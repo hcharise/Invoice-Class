@@ -14,7 +14,7 @@ onto an invoice, with the total invoice cost for that item calculated at the bot
 
 INVOICE.H (for customer)
 
-*/
+*/ 
 
 #include <string>
 
