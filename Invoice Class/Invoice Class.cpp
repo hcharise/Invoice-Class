@@ -24,10 +24,13 @@ an int value. If the quantitiy is not positive, it should be set to 0.
 Write a test program that demonstrates class Invoice's capabilities.
 */
 
+#include <iostream>
 #include <string>
 
 using std::string;
-
+using std::cin;
+using std::cout;
+using std::endl;
 
 class Invoice {
 public:
@@ -73,15 +76,55 @@ public:
 		return pricePerItem;
 	} // end getPricePerItem
 
+	// Calculate total cost for invoice
+	int getInvoiceAmount() {
+		invoiceAmount = itemQuantity * pricePerItem;
+		return invoiceAmount;
+	}
+
 private:
 	string partNumber;
 	string partDescription;
 	int itemQuantity;
 	int pricePerItem;
+	int invoiceAmount = 0; // IS THIS OKAY??
 }; // end class Invoice
 
 // MAIN
 int main() {
+	// VARIABLES
+	string itemNum;
+	string itemDesc;
+	int itemQuant;
+	int itemPrice;
+
+	// Print intro banner
+	cout << "*****************************\n"
+		 << "      Hannah's Hardware      \n"
+		 << "       Invoice System       \n"
+		 << "*****************************\n\n";
+
+	/* DELETING?
+	// Print menu
+	cout << "ITEMS AVAILABLE:\n"
+		 << "Part Number     Part Description     Price Per Item\n"
+		 << "A100            2\" Nails, 20 ct      $2\n"
+		 << "A101            3\" Nails, 20 ct      $2\n\n";
+	*/
+
+	cout << "Enter item number for this purchase: ";
+	cin >> itemNum;
+	cout << "Enter the desription of this item: ";
+	cin >> itemDesc;
+	cout << "Enter the quantity of item " << itemNum << " that is being purchased: ";
+	// Not taking input here?
+	cin >> itemQuant;
+	cout << "Enter the price per item: ";
+	cin >> itemPrice;
+
+
+	// Create invoice class
 	Invoice drawerPullInvoice{ "P123", "Drawer Pull, Black", 12, 3 };
+
 
 } // end main
