@@ -12,6 +12,8 @@ part number, part description, item quantity, and price per item and uses a clas
 Invoice to store this data. The program then prints the information from the customer
 onto an invoice, with the total invoice cost for that item calculated at the bottom.
 
+INVOICE.H (for customer)
+
 */
 
 #include <string>
@@ -21,54 +23,22 @@ using std::string;
 class Invoice {
 public:
 	// CONSTRUCTOR
-	Invoice(string partNum, string partDesc, int itemQuant, int itemPrice)
-		: partNumber{ partNum }, partDescription{ partDesc }, itemQuantity{ itemQuant }, pricePerItem{ itemPrice } {
-		// Validate itemQuantity to be positive; if negative, set to 0
-		if (itemQuantity < 0) {
-			itemQuantity = 0;
-		}
-	} // end Invoice constructor
-
+	Invoice(string partNum, string partDesc, int itemQuant, int itemPrice);
 
 	// SETTERS
-	string setPartNumber(string partNum) {
-		partNumber = partNum;
-	} // end setPartNumber
-
-	string setPartDescription(string partDesc) {
-		partDescription = partDesc;
-	} // end setPartDescription
-
-	int setItemQuantity(int itemQuant) {
-		itemQuantity = itemQuant;
-	} // end setItemQuantity
-
-	int setPricePerItem(int itemPrice) {
-		pricePerItem = itemPrice;
-	} // end setPricePerItem
+	void setPartNumber(string partNum);
+	void setPartDescription(string partDesc);
+	void setItemQuantity(int itemQuant);
+	void setPricePerItem(int itemPrice);
 
 	// GETTERS
-	string getPartNumber() const {
-		return partNumber;
-	} // end getPartNumber
-
-	string getPartDescription() const {
-		return partDescription;
-	} // end getPartDescription
-
-	int getItemQuantity() const {
-		return itemQuantity;
-	} // end getItemQuantity
-
-	int getPricePerItem() const {
-		return pricePerItem;
-	} // end getPricePerItem
+	string getPartNumber() const;
+	string getPartDescription() const;
+	int getItemQuantity() const;
+	int getPricePerItem() const;
 
 	// Calculate total cost for invoice
-	int getInvoiceAmount() {
-		invoiceAmount = itemQuantity * pricePerItem;
-		return invoiceAmount;
-	}
+	int getInvoiceAmount();
 
 private:
 	string partNumber;

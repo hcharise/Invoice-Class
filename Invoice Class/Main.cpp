@@ -1,4 +1,20 @@
+/*
+Hannah Ashton
 
+Professor Jonathan S. Weissman
+CIS 554-M401 Object Oriented Programming in C++
+
+Syracuse University
+HW #1 - Exercise 3.10 p100
+1/30/2024
+This program creates invoices for a hardware store. It takes in the user's input for the
+part number, part description, item quantity, and price per item and uses a class called
+Invoice to store this data. The program then prints the information from the customer
+onto an invoice, with the total invoice cost for that item calculated at the bottom.
+
+MAIN.CPP
+
+*/
 
 #include <iostream>
 #include <string>

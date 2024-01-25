@@ -12,75 +12,61 @@ part number, part description, item quantity, and price per item and uses a clas
 Invoice to store this data. The program then prints the information from the customer
 onto an invoice, with the total invoice cost for that item calculated at the bottom. 
 
+INVOICE.CPP (for company)
+
 */
 
-#include <iostream>
 #include <string>
+#include "Invoice.h"
 
 using std::string;
-using std::cin;
-using std::cout;
-using std::endl;
-using std::getline;
 
-class Invoice {
-public:
-	// CONSTRUCTOR
-	
-	Invoice(string partNum, string partDesc, int itemQuant, int itemPrice)
-	: partNumber{partNum}, partDescription{partDesc}, itemQuantity{itemQuant}, pricePerItem{itemPrice} {
-		// Validate itemQuantity to be positive; if negative, set to 0
-		if (itemQuantity < 0) {
-			itemQuantity = 0;
-		}
-	} // end Invoice constructor
-
-
-	// SETTERS
-	string setPartNumber(string partNum) {
-		partNumber = partNum;
-	} // end setPartNumber
-
-	string setPartDescription(string partDesc) {
-		partDescription = partDesc;
-	} // end setPartDescription
-
-	int setItemQuantity(int itemQuant) {
-		itemQuantity = itemQuant;
-	} // end setItemQuantity
-
-	int setPricePerItem(int itemPrice) {
-		pricePerItem = itemPrice;
-	} // end setPricePerItem
-
-	// GETTERS
-	string getPartNumber() const {
-		return partNumber;
-	} // end getPartNumber
-
-	string getPartDescription() const {
-		return partDescription;
-	} // end getPartDescription
-
-	int getItemQuantity() const {
-		return itemQuantity;
-	} // end getItemQuantity
-
-	int getPricePerItem() const {
-		return pricePerItem;
-	} // end getPricePerItem
-
-	// Calculate total cost for invoice
-	int getInvoiceAmount() {
-		invoiceAmount = itemQuantity * pricePerItem;
-		return invoiceAmount;
+// CONSTRUCTOR
+Invoice::Invoice(string partNum, string partDesc, int itemQuant, int itemPrice)
+: partNumber{partNum}, partDescription{partDesc}, itemQuantity{itemQuant}, pricePerItem{itemPrice} {
+	// Validate itemQuantity to be positive; if negative, set to 0
+	if (itemQuantity < 0) {
+		itemQuantity = 0;
 	}
+} // end Invoice constructor
 
-private:
-	string partNumber;
-	string partDescription;
-	int itemQuantity;
-	int pricePerItem;
-	int invoiceAmount = 0; // IS THIS OKAY??
-}; // end class Invoice
 
+// SETTERS
+void Invoice::setPartNumber(string partNum) {
+	partNumber = partNum;
+} // end setPartNumber
+
+void Invoice::setPartDescription(string partDesc) {
+	partDescription = partDesc;
+} // end setPartDescription
+
+void Invoice::setItemQuantity(int itemQuant) {
+	itemQuantity = itemQuant;
+} // end setItemQuantity
+
+void Invoice::setPricePerItem(int itemPrice) {
+	pricePerItem = itemPrice;
+} // end setPricePerItem
+
+// GETTERS
+string Invoice::getPartNumber() const {
+	return partNumber;
+} // end getPartNumber
+
+string Invoice::getPartDescription() const {
+	return partDescription;
+} // end getPartDescription
+
+int Invoice::getItemQuantity() const {
+	return itemQuantity;
+} // end getItemQuantity
+
+int Invoice::getPricePerItem() const {
+	return pricePerItem;
+} // end getPricePerItem
+
+// Calculate total cost for invoice
+int Invoice::getInvoiceAmount() {
+	invoiceAmount = itemQuantity * pricePerItem;
+	return invoiceAmount;
+}
