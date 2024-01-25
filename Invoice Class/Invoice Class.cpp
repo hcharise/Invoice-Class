@@ -7,21 +7,11 @@ CIS 554-M401 Object Oriented Programming in C++
 Syracuse University
 HW #1 - Exercise 3.10 p100
 1/30/2024
-This program does so on and so forth...
+This program creates invoices for a hardware store. It takes in the user's input for the
+part number, part description, item quantity, and price per item and uses a class called
+Invoice to store this data. The program then prints the information from the customer
+onto an invoice, with the total invoice cost for that item calculated at the bottom. 
 
-
-3.10: Create a class called Invoice that a hardware store might use to represent
-an invoice for an item sold at the store. An Invoice should include four data members:
- - a part number (string)
- - a part description (string)
- - a quantity of the item being purchased (int)
- - a price per item (int)
-Your class should have a constructor that initializes the four data members.
-Provide a set and a get function for each data member.
-In addition, provide a member function named getInvoiceAmount that calculates the invoice
-amount (ie, multiples the quantity by the price per item), then returns the amount as
-an int value. If the quantitiy is not positive, it should be set to 0.
-Write a test program that demonstrates class Invoice's capabilities.
 */
 
 #include <iostream>
@@ -31,6 +21,7 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::getline;
 
 class Invoice {
 public:
@@ -38,7 +29,10 @@ public:
 	
 	Invoice(string partNum, string partDesc, int itemQuant, int itemPrice)
 	: partNumber{partNum}, partDescription{partDesc}, itemQuantity{itemQuant}, pricePerItem{itemPrice} {
-		// empty body
+		// Validate itemQuantity to be positive; if negative, set to 0
+		if (itemQuantity < 0) {
+			itemQuantity = 0;
+		}
 	} // end Invoice constructor
 
 
@@ -99,32 +93,33 @@ int main() {
 	int itemPrice;
 
 	// Print intro banner
-	cout << "*****************************\n"
-		 << "      Hannah's Hardware      \n"
-		 << "       Invoice System       \n"
-		 << "*****************************\n\n";
+	cout << "**********************************************************\n"
+		 << "                    Hannah's Hardware                     \n"
+		 << "                      Invoice System                      \n"
+		 << "**********************************************************\n\n";
 
-	/* DELETING?
-	// Print menu
-	cout << "ITEMS AVAILABLE:\n"
-		 << "Part Number     Part Description     Price Per Item\n"
-		 << "A100            2\" Nails, 20 ct      $2\n"
-		 << "A101            3\" Nails, 20 ct      $2\n\n";
-	*/
-
-	cout << "Enter item number for this purchase: ";
-	cin >> itemNum;
-	cout << "Enter the desription of this item: ";
-	cin >> itemDesc;
-	cout << "Enter the quantity of item " << itemNum << " that is being purchased: ";
-	// Not taking input here?
+	cout << "For this purchase, enter the desired...\n"
+		 << "   - item number: ";
+	getline(cin, itemNum);
+	cout << "   - item description: ";
+	getline(cin, itemDesc);
+	cout << "   - item quantity: ";
 	cin >> itemQuant;
-	cout << "Enter the price per item: ";
+	cout << "   - item price: $";
 	cin >> itemPrice;
 
 
 	// Create invoice class
-	Invoice drawerPullInvoice{ "P123", "Drawer Pull, Black", 12, 3 };
+	// Can/should this be done before user's input so that input can go directly into object??
+	Invoice customerInvoice{itemNum, itemDesc, itemQuant, itemPrice};
 
 
+	// Print invoice for customer
+	cout << "\n---------- INVOICE -----------\n"
+		 << "Part Number: " << customerInvoice.getPartNumber() << "\n"
+		 << "Part Description: " << customerInvoice.getPartDescription() << "\n"
+		 << "Item Quantity: " << customerInvoice.getItemQuantity() << "\n"
+		 << "Price Per Item: $" << customerInvoice.getPricePerItem() << "\n\n"
+		 << "Total Invoice Cost = $" << customerInvoice.getInvoiceAmount() << "\n"
+		<< "--------- Thank you! ---------\n";
 } // end main
