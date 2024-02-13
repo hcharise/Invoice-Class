@@ -76,6 +76,5 @@ int Invoice::getPricePerItem() const {
 
 // Calculate total cost for invoice and returns
 int Invoice::getInvoiceAmount() {
-	invoiceAmount = itemQuantity * pricePerItem;
-	return invoiceAmount;
+	return itemQuantity * pricePerItem;
 } // end getInvoiceAmount
