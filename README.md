@@ -11,6 +11,6 @@ The program is broken into a three-tiered model (main, cpp, h files) to separate
 The interface of the Invoice class is outlined in the header file for distribution to the program's customer. The implementation of the Invoice class is kept hidden from the customer in the Invoice.cpp file.
 
 ## Invoice Class
-The Invoice class organizes the data members and member functions needed to generate the invoice for the customer. This includes a private data member for each of the invoices details entered by the user (part number, quantity, cost, etc), which are all initialized in the constructor. The constructor also 
+The Invoice class organizes the data members and member functions needed to generate the invoice for the customer. This includes a private data member for each of the invoices details entered by the user (part number, quantity, cost, etc), which are all initialized in the constructor. The constructor also validates the item quantity to be greater than 0.
 
 Each data member has a getter and setter function for retrieval and updates. There is also a getInvoiceAmount() function that calculates the total invoice amount (part quantity * part cost) to be printed at the bottom of the invoice.
