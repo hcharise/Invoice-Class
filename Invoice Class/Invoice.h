@@ -61,5 +61,4 @@ private:
 	string partDescription; // Stores the Invoice object's part description, initialized in constructor
 	int itemQuantity; // Stores the Invoice object's item quantity, initialized in constructor
 	int pricePerItem; // Stores the Invoice object's price per item, initialized in constructor
-	int invoiceAmount = 0; // Stores the Invoice object's total invoice cost, initialized to 0
 }; // end class Invoice
